@@ -1,45 +1,45 @@
-# CakePHP Gearman plugin
+# CakePHP RabbitMQ plugin
 
 
-[![Build Status](https://img.shields.io/travis/CVO-Technologies/cakephp-gearman/master.svg?style=flat-square)](https://travis-ci.org/CVO-Technologies/cakephp-gearman)
+[![Build Status](https://img.shields.io/travis/0100Dev/cakephp-rabbitmq/master.svg?style=flat-square)](https://travis-ci.org/0100Dev/cakephp-rabbitmq)
 [![StyleCI Status](https://styleci.io/repos/43746752/shield)](https://styleci.io/repos/43746752)
-[![Coverage Status](https://img.shields.io/codecov/c/github/CVO-Technologies/cakephp-gearman/master.svg?style=flat-square)](https://codecov.io/github/cvo-technologies/cakephp-gearman)
-[![Total Downloads](https://img.shields.io/packagist/dt/CVO-Technologies/cakephp-gearman.svg?style=flat-square)](https://packagist.org/packages/cvo-technologies/cakephp-gearman)
+[![Coverage Status](https://img.shields.io/codecov/c/github/0100Dev/cakephp-rabbitmq/master.svg?style=flat-square)](https://codecov.io/github/0100Dev/cakephp-rabbitmq)
+[![Total Downloads](https://img.shields.io/packagist/dt/0100Dev/cakephp-rabbitmq.svg?style=flat-square)](https://packagist.org/packages/0100Dev/cakephp-rabbitmq)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.txt)
 
-Gearman task offloading for CakePHP 3.
+RabbitMQ plugin for CakePHP 3.
 
 ## Requirements
 
 - PHP 5.5.9+
 - CakePHP 3.2+
-- [Gearman Job Server](http://gearman.org)
-- [Gearman PHP extension](http://php.net/manual/en/book.gearman.php)
+- [RabbitMQ message broker](http://www.rabbitmq.com)
 
 ## Why use this plugin?
 
 Use this plugin to drastically reduce page load times by offloading
 time consuming processes (like sending emails and resizing uploaded images) to
-a Gearman Job Server.
+a CLI consumer using messages in RabbitMQ. Could also be used to communicate with
+other systems or, for example, log lintes.
 
 ## Installation
 
 Install the plugin using [Composer](https://getcomposer.org):
 
 ```
-composer require cvo-technologies/cakephp-gearman
+composer require 0100dev/cakephp-rabbitmq
 ```
 
 Now load the plugin by either running this shell command:
 
 ```
-bin/cake plugin load CvoTechnologies/Gearman --bootstrap
+bin/cake plugin load 0100Dev/RabbitMQ --bootstrap
 ```
 
 or by manually adding the following line to ``config/bootstrap.php``:
 
 ```php
-Plugin::load('CvoTechnologies/Gearman', ['bootstrap' => true]);
+Plugin::load('0100Dev/RabbitMQ', ['bootstrap' => true]);
 ```
 
 Lastly, add a new `Gearman` configuration section to (most likely) `app.php`:
@@ -82,7 +82,7 @@ To start the `WorkerShell` so it will listen for incoming tasks run the
 following command on your local system:
 
 ```
-bin/cake worker
+bin/cake consumer
 ```
 
 ## Built-in Tasks
@@ -193,8 +193,8 @@ Before submitting a PR please make sure that:
 
 - [PHPUnit](http://book.cakephp.org/3.0/en/development/testing.html#running-tests)
 and [CakePHP Code Sniffer](https://github.com/cakephp/cakephp-codesniffer) tests pass
-- [Code Coverage](https://codecov.io/github/cvo-technologies/cakephp-gearman) does not decrease
+- [Code Coverage](https://codecov.io/github/0100Dev/cakephp-rabbitmq) does not decrease
 
 ## Bugs & Feedback
 
-http://github.com/cvo-technologies/cakephp-gearman/issues
+http://github.com/0100Dev/cakephp-rabbtmq/issues

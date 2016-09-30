@@ -6,7 +6,7 @@
     >
 
     <testsuites>
-        <testsuite name="Gearman Test Cases">
+        <testsuite name="RabbitMQ Test Cases">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>

@@ -1,20 +1,20 @@
 {
-    "name": "cvo-technologies/cakephp-gearman",
-    "description": "A gearman plugin for CakePHP 3",
+    "name": "0100Dev/cakephp-rabbitmq",
+    "description": "A RabbitMQ plugin for CakePHP 3",
     "type": "cakephp-plugin",
     "keywords": [
         "cakephp",
-        "CVO-technologies",
-        "gearman",
-        "workers",
-        "jobs"
+        "0100Dev",
+        "rabbitmq",
+        "consumers",
+        "producers"
     ],
-    "homepage": "https://github.com/cvo-technologies/cakephp-gearman",
+    "homepage": "https://github.com/0100Dev/cakephp-rabbitmq",
     "license": "MIT",
     "authors": [
         {
             "name": "Wouter van Os",
-            "homepage": "http://wouter0100.nl",
+            "homepage": "https://0100dev.nl",
             "role": "Author"
         },
         {
@@ -24,12 +24,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/cvo-technologies/cakephp-gearman/issues",
-        "source": "https://github.com/cvo-technologies/cakephp-gearman"
+        "issues": "https://github.com/0100Dev/cakephp-rabbitmq/issues",
+        "source": "https://github.com/0100Dev/cakephp-rabbitmq"
     },
     "require": {
         "php": ">=5.5.9",
-        "ext-gearman": "*",
+	"php-amqplib/php-amqplib": "2.6.*",
         "cakephp/cakephp": "~3.2"
     },
     "require-dev": {
@@ -39,13 +39,13 @@
     },
     "autoload": {
         "psr-4": {
-            "CvoTechnologies\\Gearman\\": "src"
+            "DevApp\\RabbitMQ\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "TestApp\\": "tests/TestApp/src",
-            "CvoTechnologies\\Gearman\\Test\\": "tests"
+            "DevApp\\RabbitMQ\\Test\\": "tests"
         }
     }
 }
