@@ -1,5 +1,5 @@
 {
-    "name": "0100Dev/cakephp-rabbitmq",
+    "name": "0100dev/cakephp-rabbitmq",
     "description": "A RabbitMQ plugin for CakePHP 3",
     "type": "cakephp-plugin",
     "keywords": [
