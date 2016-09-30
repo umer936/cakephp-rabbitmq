@@ -33,13 +33,13 @@ composer require 0100dev/cakephp-rabbitmq
 Now load the plugin by either running this shell command:
 
 ```
-bin/cake plugin load 0100Dev/RabbitMQ --bootstrap
+bin/cake plugin load DevApp/RabbitMQ --bootstrap
 ```
 
 or by manually adding the following line to ``config/bootstrap.php``:
 
 ```php
-Plugin::load('0100Dev/RabbitMQ', ['bootstrap' => true]);
+Plugin::load('DevApp/RabbitMQ', ['bootstrap' => true]);
 ```
 
 Lastly, add a new `Gearman` configuration section to (most likely) `app.php`:
