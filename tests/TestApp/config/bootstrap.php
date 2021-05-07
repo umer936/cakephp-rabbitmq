@@ -1,7 +1,9 @@
 <?php
 
-\Cake\Core\Configure::write('App.namespace', 'TestApp');
-\Cake\Core\Configure::write('Gearman.Jobs', [
+use Cake\Core\Configure;
+
+Configure::write('App.namespace', 'TestApp');
+Configure::write('Gearman.Jobs', [
     'testJob' => [
         'className' => 'TestJob',
     ],

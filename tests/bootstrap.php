@@ -5,6 +5,8 @@
  * This function is used to find the location of CakePHP whether CakePHP
  * has been installed as a dependency of the plugin, or the plugin is itself
  * installed as a dependency of an application.
+ *
+ * @throws \Exception
  */
 $findRoot = function ($root) {
     do {
@@ -26,5 +28,4 @@ if (file_exists($root . '/config/bootstrap.php')) {
 }
 
 require $root . '/vendor/cakephp/cakephp/tests/bootstrap.php';
-
-\Cake\Core\Plugin::load('CvoTechnologies/Gearman', ['path' => dirname(dirname(__FILE__)) . DS]);
+$this->addPlugin('DevApp/RabbitMQ', ['path' => dirname(dirname(__FILE__)) . DS]);

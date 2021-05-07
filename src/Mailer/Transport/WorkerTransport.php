@@ -1,11 +1,11 @@
 <?php
 
-namespace CvoTechnologies\Gearman\Mailer\Transport;
+namespace DevApp\RabbitMQ\Mailer\Transport;
 
 use Cake\Core\Configure;
 use Cake\Mailer\AbstractTransport;
-use Cake\Mailer\Email;
-use CvoTechnologies\Gearman\JobAwareTrait;
+use Cake\Mailer\Message;
+use DevApp\RabbitMQ\JobAwareTrait;
 
 class WorkerTransport extends AbstractTransport
 {
@@ -25,19 +25,19 @@ class WorkerTransport extends AbstractTransport
     /**
      * Send email.
      *
-     * @param \Cake\Mailer\Email $email Email instance.
+     * @param \Cake\Mailer\Message $message Email instance.
      *
      * @return array|bool
      */
-    public function send(Email $email)
+    public function send(Message $message): array
     {
         $result = $this->execute('emailWithWorker', [
-            'email' => $email,
-            'transport' => $this->config('transport'),
+            'email' => $message,
+            'transport' => $this->getConfig('transport'),
             'fullBaseUrl' => Configure::read('App.fullBaseUrl'),
-        ], $this->config('background'));
+        ], $this->getConfig('background'));
 
-        if (!$this->config('background')) {
+        if (!$this->getConfig('background')) {
             return $result;
         }
 

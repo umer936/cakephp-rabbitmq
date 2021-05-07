@@ -11,8 +11,8 @@ RabbitMQ plugin for CakePHP 3.
 
 ## Requirements
 
-- PHP 5.5.9+
-- CakePHP 3.2+
+- PHP 7.4+
+- CakePHP 4.0+
 - [RabbitMQ message broker](http://www.rabbitmq.com)
 
 ## Why use this plugin?
@@ -39,7 +39,7 @@ bin/cake plugin load DevApp/RabbitMQ --bootstrap
 or by manually adding the following line to ``config/bootstrap.php``:
 
 ```php
-Plugin::load('DevApp/RabbitMQ', ['bootstrap' => true]);
+$this->addPlugin('DevApp/RabbitMQ', ['bootstrap' => true]);
 ```
 
 Lastly, add a new `Gearman` configuration section to (most likely) `app.php`:
@@ -57,7 +57,7 @@ Lastly, add a new `Gearman` configuration section to (most likely) `app.php`:
 
 ### Optional: system verification
 
-Before proceeding you might want to verify that the
+Before proceeding, you might want to verify that the
 [Gearman Job Server](http://gearman.org//getting-started) is actually up
 and running on your local system.
 
@@ -141,7 +141,7 @@ As an example we will create the following `SleepTask` that:
 
 ```php
 <?php
-namespace CvoTechnologies\Gearman\Shell\Task;
+namespace DevApp\RabbitMQ\Shell\Task;
 
 use Cake\Console\Shell;
 

@@ -1,26 +1,24 @@
 <?php
 
-namespace CvoTechnologies\Gearman\Test\TestCase\Shell\Task;
+namespace DevApp\RabbitMQ\Test\TestCase\Shell\Task;
 
 use Cake\Mailer\Email;
 use Cake\TestSuite\TestCase;
-use CvoTechnologies\Gearman\Shell\Task\EmailTask;
+use DevApp\RabbitMQ\Shell\Task\EmailTask;
 
 class EmailTaskTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         Email::configTransport('default', [
             'className' => 'Debug',
         ]);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Transport config "default" is missing.
-     */
     public function testMissingTransport()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Transport config \"default\" is missing.");
         Email::dropTransport('default');
 
         $emailTask = new EmailTask();
@@ -62,7 +60,7 @@ class EmailTaskTest extends TestCase
         $this->assertArrayHasKey('headers', $result);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Email::dropTransport('default');
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace CvoTechnologies\Gearman\Shell\Task;
+namespace DevApp\RabbitMQ\Shell\Task;
 
 use Cake\Console\Shell;
 use Cake\Core\Configure;
@@ -33,13 +33,13 @@ class EmailTask extends Shell
             Configure::write('App.fullBaseUrl', $previousFullBaseUrl);
         }
 
-        $subject = $email->subject();
+        $subject = $email->getSubject();
         if (method_exists($email, 'getOriginalSubject')) {
             $subject = $email->getOriginalSubject();
         }
 
-        $this->log(__('Sending email with subject {0} to {1}', $subject, implode(',', $email->to())), LogLevel::INFO);
+        $this->log(__('Sending email with subject {0} to {1}', $subject, implode(',', $email->getTo())), LogLevel::INFO);
 
-        return $email->transport($workload['transport'])->send();
+        return $email->setTransport($workload['transport'])->send();
     }
 }

@@ -1,9 +1,9 @@
 <?php
-namespace CvoTechnologies\Gearman\Shell;
+namespace DevApp\RabbitMQ\Shell;
 
 use Cake\Console\Shell;
 use Cake\Core\Configure;
-use CvoTechnologies\Gearman\JobAwareTrait;
+use DevApp\RabbitMQ\JobAwareTrait;
 use GearmanJob;
 use Psr\Log\LogLevel;
 
@@ -14,7 +14,7 @@ class WorkerShell extends Shell
     /**
      * Process jobs by calling main() function in Shell Tasks.
      *
-     * @return mixed Instance of Shell Task
+     * @return void Instance of Shell Task
      */
     public function main()
     {

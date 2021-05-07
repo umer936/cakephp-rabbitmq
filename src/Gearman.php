@@ -1,6 +1,6 @@
 <?php
 
-namespace CvoTechnologies\Gearman;
+namespace DevApp\RabbitMQ;
 
 class Gearman
 {

@@ -3,7 +3,9 @@
 
     </thead>
     <tbody>
-    <?php foreach ($jobs as $job): ?>
+    <?php use DevApp\RabbitMQ\Gearman;
+
+    foreach ($jobs as $job): ?>
     <tr>
         <td><?= h($job['name']); ?></td>
         <td><?= $this->Toolbar->makeNeatArray(unserialize($job['workload'])); ?></td>
@@ -11,13 +13,13 @@
         <td>
             <?php
             switch ($job['priority']):
-                case \CvoTechnologies\Gearman\Gearman::PRIORITY_LOW:
+                case Gearman::PRIORITY_LOW:
                     echo h(__('Low'));
                     break;
-                case \CvoTechnologies\Gearman\Gearman::PRIORITY_NORMAL:
+                case Gearman::PRIORITY_NORMAL:
                     echo h(__('Normal'));
                     break;
-                case \CvoTechnologies\Gearman\Gearman::PRIORITY_HIGH:
+                case Gearman::PRIORITY_HIGH:
                     echo h(__('High'));
                     break;
             endswitch;

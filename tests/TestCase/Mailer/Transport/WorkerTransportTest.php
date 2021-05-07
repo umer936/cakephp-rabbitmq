@@ -1,6 +1,6 @@
 <?php
 
-namespace CvoTechnologies\Gearman\Test\TestCase\Mailer\Transport;
+namespace DevApp\RabbitMQ\Test\TestCase\Mailer\Transport;
 
 use Cake\Core\Configure;
 use Cake\Mailer\Email;
@@ -8,7 +8,7 @@ use Cake\TestSuite\TestCase;
 
 class WorkerTransportTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         Configure::write('Gearman.Servers', [
             '127.0.0.1',
@@ -17,8 +17,8 @@ class WorkerTransportTest extends TestCase
 
     public function testSendBackground()
     {
-        $mock = $this->getMockBuilder('CvoTechnologies\Gearman\Mailer\Transport\WorkerTransport')
-            ->setMethods(['execute']);
+        $mock = $this->getMockBuilder('DevApp\RabbitMQ\Mailer\Transport\WorkerTransport')
+            ->addMethods(['execute']);
 
         $email = new Email();
 
@@ -36,8 +36,8 @@ class WorkerTransportTest extends TestCase
 
     public function testSendForeground()
     {
-        $mock = $this->getMockBuilder('CvoTechnologies\Gearman\Mailer\Transport\WorkerTransport')
-            ->setMethods(['execute'])
+        $mock = $this->getMockBuilder('DevApp\RabbitMQ\Mailer\Transport\WorkerTransport')
+            ->addMethods(['execute'])
             ->setConstructorArgs([
                 [
                     'background' => false,
@@ -59,7 +59,7 @@ class WorkerTransportTest extends TestCase
         $this->assertTrue($transport->send($email));
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Configure::drop('Gearman');
     }

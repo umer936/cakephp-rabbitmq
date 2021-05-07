@@ -1,14 +1,14 @@
 <?php
 
-namespace CvoTechnologies\Gearman\Panel;
+namespace DevApp\RabbitMQ\Panel;
 
-use CvoTechnologies\Gearman\DebugJob;
+use DevApp\RabbitMQ\DebugJob;
 use DebugKit\DebugPanel;
 
 class JobPanel extends DebugPanel
 {
 
-    public $plugin = 'CvoTechnologies/Gearman';
+    public $plugin = 'DevApp/RabbitMQ';
 
     /**
      * {@inheritDoc}

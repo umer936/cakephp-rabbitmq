@@ -1,11 +1,11 @@
 <?php
 
-namespace CvoTechnologies\Gearman\Test\TestCase\Shell\Task;
+namespace DevApp\RabbitMQ\Test\TestCase\Shell\Task;
 
 use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
-use CvoTechnologies\Gearman\Gearman;
-use CvoTechnologies\Gearman\JobAwareTrait;
+use DevApp\RabbitMQ\Gearman;
+use DevApp\RabbitMQ\JobAwareTrait;
 
 class JobAwareTraitClass
 {
@@ -14,7 +14,7 @@ class JobAwareTraitClass
 
 class JobAwareTraitTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         Configure::write('Gearman.Servers', [
             '127.0.0.1',
@@ -37,12 +37,10 @@ class JobAwareTraitTest extends TestCase
         $this->assertInstanceOf('\GearmanWorker', $gearmanClient);
     }
 
-    /**
-     * @expectedException \Cake\Core\Exception\Exception
-     * @expectedExceptionMessage Invalid Gearman configuration: you must configure at least one server
-     */
     public function testInvalidServerConfiguration()
     {
+        $this->expectException(\Cake\Core\Exception\Exception::class);
+        $this->expectExceptionMessage("Invalid Gearman configuration: you must configure at least one server");
         Configure::drop('Gearman.Servers');
         Configure::write('Gearman.Servers', []);
 
@@ -77,7 +75,7 @@ class JobAwareTraitTest extends TestCase
         ];
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Configure::drop('Gearman');
     }

@@ -1,5 +1,5 @@
 <?php
-namespace CvoTechnologies\Gearman;
+namespace DevApp\RabbitMQ;
 
 use Cake\Core\Configure;
 use Cake\Core\Exception\Exception;

@@ -16,14 +16,15 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+use Cake\Console\ShellDispatcher;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
 
-$minVersion = '5.5.9';
+$minVersion = '7.4';
 if (file_exists('composer.json')) {
     $composer = json_decode(file_get_contents('composer.json'));
     if (isset($composer->require->php)) {
-        $minVersion = preg_replace('/([^0-9\.])/', '', $composer->require->php);
+        $minVersion = preg_replace('/([^0-9.])/', '', $composer->require->php);
     }
 }
 if (version_compare(phpversion(), $minVersion, '<')) {
@@ -60,7 +61,7 @@ if (!file_exists(dirname(__DIR__)  . DS . 'vendor' . DS . 'cakephp-plugins.php')
 
     require ROOT  . DS . 'config' . DS . 'bootstrap.php';
 
-    Plugin::load('CvoTechnologies/Gearman', ['path' => './', 'bootstrap' => true]);
+    $this->addPlugin('DevApp/RabbitMQ', ['path' => './', 'bootstrap' => true]);
 
     Configure::write('Gearman.Servers', [
         '127.0.0.1'
@@ -69,5 +70,5 @@ if (!file_exists(dirname(__DIR__)  . DS . 'vendor' . DS . 'cakephp-plugins.php')
     require dirname(__DIR__)  . DS . 'config' . DS . 'bootstrap.php';
 }
 
-$shellDispatcher = new \Cake\Console\ShellDispatcher([$_SERVER['argv'][0], 'worker']);
+$shellDispatcher = new ShellDispatcher([$_SERVER['argv'][0], 'worker']);
 exit($shellDispatcher->dispatch());

@@ -1,15 +1,15 @@
 <?php
 
-namespace CvoTechnologies\Gearman\Test\TestCase\Shell\Task;
+namespace DevApp\RabbitMQ\Test\TestCase\Panel;
 
 use Cake\TestSuite\TestCase;
-use CvoTechnologies\Gearman\DebugJob;
-use CvoTechnologies\Gearman\Gearman;
-use CvoTechnologies\Gearman\Panel\JobPanel;
+use DevApp\RabbitMQ\DebugJob;
+use DevApp\RabbitMQ\Gearman;
+use DevApp\RabbitMQ\Panel\JobPanel;
 
 class JobPanelTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         DebugJob::$jobs = [
             [
@@ -68,7 +68,7 @@ class JobPanelTest extends TestCase
         ], $panel->data());
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         DebugJob::$jobs = [];
     }
