@@ -29,7 +29,7 @@
     },
     "require": {
         "php": ">=7.4",
-	    "php-amqplib/php-amqplib": "^3.0.0",
+	"php-amqplib/php-amqplib": "*",
         "cakephp/cakephp": "^4.0.0",
         "ext-json": "*"
     },
