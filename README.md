@@ -1,3 +1,43 @@
+# Working, but not maintained
+---
+
+I no longer use this plugin in favor of https://github.com/dereuromark/cakephp-queue 
+
+Additionally, there is https://github.com/cakephp/queue which features a lot more transports, including AMQP Bunny (core of RabbitMQ): https://php-enqueue.github.io/transport
+
+See also: https://github.com/FriendsOfCake/awesome-cakephp#queue for more options
+
+This plugin will still live on in case someone needs RabbitMQ to just work in CakePHP 4
+
+composer.json:
+```composer.json
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/umer936/cakephp-rabbitmq.git"
+        }
+    ],
+    
+    
+    "autoload": {
+        "psr-4": {
+            "DevApp\\RabbitMQ\\": "./vendor/umer936/cakephp-rabbitmq/src/"
+        }
+    },
+```
+```
+composer require umer936/cakephp-rabbitmq
+```
+Application.php (likely don't need the options array but for some reason I added it at some point)
+```php
+        $this->addPlugin('DevApp/RabbitMQ', [
+            'bootstrap' => true,
+            'path' => ROOT . DS . 'vendor' . DS . 'umer936' . DS . 'cakephp-rabbitmq' . DS,
+        ]);
+```
+
+
+
 # CakePHP RabbitMQ plugin
 
 
@@ -7,7 +47,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/0100Dev/cakephp-rabbitmq.svg?style=flat-square)](https://packagist.org/packages/0100Dev/cakephp-rabbitmq)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.txt)
 
-RabbitMQ plugin for CakePHP 3.
+RabbitMQ plugin for CakePHP 4.
 
 ## Requirements
 
